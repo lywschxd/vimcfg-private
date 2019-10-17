@@ -26,11 +26,11 @@ set autoread
 syntax on
 set background=dark
 set nobackup
-
-if !has('nvim')
-    set termwinsize=
-endif
-
+set mouse=h
+set ignorecase
+" if !has("nvim")
+" set termwinsize=
+" endif
 set updatetime=500
 set go=
 
@@ -49,6 +49,13 @@ if has("gui_running")
     endif
 
 endif
+
+"记住最后一次编辑的位置
+autocmd BufReadPost *
+  \ if line("'\"") > 1 && line("'\"") <= line("$") |
+  \   exe "normal! g`\"" |
+  \ endif
+
 
 " script demo
 " let g:briq_tmp='/lib'

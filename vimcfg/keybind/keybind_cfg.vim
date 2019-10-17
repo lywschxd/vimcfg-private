@@ -21,6 +21,8 @@ let g:which_key_map.d = {
       \ 'l'    : [':DoxLic', 'doxygen-license'],
       \ }
 
+
+nmap <silent><c-]>    :Gtags <c-r><c-w><cr>
 nmap <silent><leader>jd    :Gtags <c-r><c-w><cr>
 nmap <silent><leader>jr    :Gtags -r <c-r><c-w><cr>
 nmap <silent><leader>je    :Gtags -ge <c-r><c-w><cr>
@@ -104,6 +106,7 @@ let g:which_key_map.q = {
       \ }
 
 " tag config
+nmap <silent><f2> :TagbarToggle<CR>
 let g:which_key_map.t = {
       \ 'name' : '+Tag',
       \ 'l'    : [':TagbarToggle', 'open-tagbar-list'],
@@ -230,10 +233,10 @@ let g:which_key_map.9 = 'switch to buffer 9'
 
 
 " window manipulate keybinding config
-nmap <silent><C-h> <C-W>h
-nmap <silent><C-l> <C-W>l
-nmap <silent><C-j> <C-W>j
-nmap <silent><C-k> <C-W>k
+nmap <silent><C-left> <C-W>h
+nmap <silent><C-right> <C-W>l
+nmap <silent><C-down> <C-W>j
+nmap <silent><C-up> <C-W>k
 
 " cancel some keybinding
 " add the autocmd hook define when at vimenter
