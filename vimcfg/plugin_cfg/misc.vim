@@ -7,7 +7,7 @@ set smartindent
 set cindent
 set autoindent
 
-let s:molokai_prefix = $HOME . '/.vim/plugged/molokai/colors'
+let s:molokai_prefix = g:vims_prefix . 'plugged/molokai/colors'
 if !empty(findfile("molokai.vim", s:molokai_prefix))
     colo molokai
 endif
@@ -58,6 +58,7 @@ autocmd BufReadPost *
 
 
 " script demo
+"
 " let g:briq_tmp='/lib'
 "
 " if '/lib' == g:briq_tmp
@@ -66,3 +67,19 @@ autocmd BufReadPost *
 "     echo mm
 "     exec('cd ' . g:briq_tmp)
 " endif
+
+" let g:vimcfg_prefix=$HOME . '/.vim'
+" let g:mhodddd = g:vimcfg_prefix . "/vimcfg/init_cfg/init_cfg_init.vim"
+" echo g:mhodddd
+" execute 'source ' . g:mhodddd
+"
+
+" function! g:Source_vims(vims)
+"     for i in a:vims
+"         echo i
+"     endfor
+" endfunction
+"
+" let mab=['a', 'b', 'c']
+"
+" call g:Source_vims(mab)
