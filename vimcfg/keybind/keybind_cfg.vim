@@ -199,8 +199,9 @@ let g:which_key_map.b = {
       \ '7'    : [':b 7', 'switch buffer 7'],
       \ '8'    : [':b 8', 'switch buffer 8'],
       \ '9'    : [':b 9', 'switch buffer 9'],
+      \ 'k'    : 'close current buffer',
       \ }
-
+nmap <leader>bk :exec "bdelete" . bufnr("%")<cr>
 
 " comment below config for airline, don't delete, uncommen it when use airline
 " nmap <leader>1 <Plug>AirlineSelectTab1
