@@ -42,17 +42,6 @@ nmap <silent><leader>jI    :cs find i ^<C-R>=expand("<cfile>")<CR>$<CR>
 nmap <silent><leader>jD    :cs find d <C-R>=expand("<cword>")<CR><CR>
 nmap <silent><leader>jA    :cs find a <C-R>=expand("<cword>")<CR><CR>
 
-" gutentag_plus key-binding config
-" noremap <silent><leader>js :GscopeFind s <C-R><C-W><cr>
-" noremap <silent><leader>jd :GscopeFind g <C-R><C-W><cr>
-" noremap <silent><leader>jr :GscopeFind c <C-R><C-W><cr>
-" noremap <silent><leader>jt :GscopeFind t <C-R><C-W><cr>
-" noremap <silent><leader>je :GscopeFind e <C-R><C-W><cr>
-" noremap <silent><leader>jf :GscopeFind f <C-R>=expand("<cfile>")<cr><cr>
-" noremap <silent><leader>ji :GscopeFind i <C-R>=expand("<cfile>")<cr><cr>
-" noremap <silent><leader>jI :GscopeFind d <C-R><C-W><cr>
-" noremap <silent><leader>jA :GscopeFind a <C-R><C-W><cr>
-
 let g:which_key_map.j = {
       \ 'name' : '+Jump',
       \ 'j'    : 'gtags-jump-definition-or-reference',
@@ -203,30 +192,6 @@ let g:which_key_map.b = {
       \ }
 nmap <leader>bk :exec "bdelete" . bufnr("%")<cr>
 
-" comment below config for airline, don't delete, uncommen it when use airline
-" nmap <leader>1 <Plug>AirlineSelectTab1
-" nmap <leader>2 <Plug>AirlineSelectTab2
-" nmap <leader>3 <Plug>AirlineSelectTab3
-" nmap <leader>4 <Plug>AirlineSelectTab4
-" nmap <leader>5 <Plug>AirlineSelectTab5
-" nmap <leader>6 <Plug>AirlineSelectTab6
-" nmap <leader>7 <Plug>AirlineSelectTab7
-" nmap <leader>8 <Plug>AirlineSelectTab8
-" nmap <leader>9 <Plug>AirlineSelectTab9
-" nmap <leader>p <Plug>AirlineSelectPrevTab
-" nmap <leader>n <Plug>AirlineSelectNextTab
-" let g:which_key_map.1 = 'switch to buffer 1'
-" let g:which_key_map.2 = 'switch to buffer 2'
-" let g:which_key_map.3 = 'switch to buffer 3'
-" let g:which_key_map.4 = 'switch to buffer 4'
-" let g:which_key_map.5 = 'switch to buffer 5'
-" let g:which_key_map.6 = 'switch to buffer 6'
-" let g:which_key_map.7 = 'switch to buffer 7'
-" let g:which_key_map.8 = 'switch to buffer 8'
-" let g:which_key_map.9 = 'switch to buffer 9'
-" let g:which_key_map.p = 'switch to buffer prev'
-" let g:which_key_map.n = 'switch to buffer next'
-
 " map key config for lightline-bufferline
 nmap <Leader>1 <Plug>lightline#bufferline#go(1)
 nmap <Leader>2 <Plug>lightline#bufferline#go(2)
@@ -253,13 +218,6 @@ nmap <silent><C-left> <C-W>h
 nmap <silent><C-right> <C-W>l
 nmap <silent><C-down> <C-W>j
 nmap <silent><C-up> <C-W>k
-
-" cancel some keybinding
-" add the autocmd hook define when at vimenter
-" au VimEnter * unmap  <unique><leader>mbt
-" au VimEnter * unmap  <unique><leader>mbu
-" au VimEnter * unmap  <unique><leader>mbc
-" au VimEnter * unmap  <unique><leader>mbe
 
 " coc.nvim coclist keybind config
 let g:which_key_map.e = {
