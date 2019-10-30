@@ -124,7 +124,7 @@ let g:which_key_map.f = {
       \ 'd'    : [':CocList mru', 'Coc-find-recent-file'],
       \ }
 
-" buffer keybinding config
+" git keybinding config
 let g:which_key_map.g = {
       \ 'name' : '+Git',
       \ 'b'    : [':Gblame', 'git-blame'],
@@ -132,6 +132,17 @@ let g:which_key_map.g = {
       \ 'c'    : [':GV', 'git-all-commits'],
       \ 'C'    : [':GV!', 'git-curr-commits'],
       \ }
+
+
+" window keybinding config
+let g:which_key_map.w = {
+      \ 'name' : '+Window',
+      \ 'v'    : [':vsplit', 'split vertical window'],
+      \ 'h'    : [':split',  'split horizontal window'],
+      \ 'k'    : [':q',      'close current window'],
+      \ }
+
+
 
 " search keybinding config
 nmap <leader>si         :Tabularize /
