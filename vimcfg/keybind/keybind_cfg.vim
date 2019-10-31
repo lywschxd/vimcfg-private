@@ -137,9 +137,10 @@ let g:which_key_map.g = {
 " window keybinding config
 let g:which_key_map.w = {
       \ 'name' : '+Window',
-      \ 'v'    : [':vsplit', 'split vertical window'],
       \ 'h'    : [':split',  'split horizontal window'],
+      \ 'n'    : [':vertical new',  'new window'],
       \ 'k'    : [':q',      'close current window'],
+      \ 'v'    : [':vsplit', 'split vertical window'],
       \ }
 
 
