@@ -201,6 +201,7 @@ let g:which_key_map.b = {
       \ '8'    : [':b 8', 'switch buffer 8'],
       \ '9'    : [':b 9', 'switch buffer 9'],
       \ 'k'    : 'close current buffer',
+      \ 'l'    : [':LineNumToggle', 'toggole line num'],
       \ }
 nmap <leader>bk :exec "bdelete" . bufnr("%")<cr>
 

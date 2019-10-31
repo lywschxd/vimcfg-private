@@ -22,6 +22,19 @@ ln -s ~/.vim/vimrc ~/.config/nvim/init.vim
 | leaderf中ctrl+j，ctrl+h | 上下选择                    |
 | SPC j                   | gtags跳转                   |
 | nredtree 中 s 键        | 在新的垂直窗口中打开选中文件|
+| nredtree 中 x 键        | 收缩目录                    |
+| nredtree 中 X 键        | 收缩所有子目录              |
+| nredtree 中 O 键        | 打开所有子目录              |
+|                         |                             |
+|                         |                             |
+|                         |                             |
+|                         |                             |
+|                         |                             |
+|                         |                             |
+|                         |                             |
+|                         |                             |
+|                         |                             |
+|                         |                             |
 |                         |                             |
 |                         |                             |
 |                         |                             |

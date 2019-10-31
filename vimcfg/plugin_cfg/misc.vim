@@ -56,6 +56,18 @@ autocmd BufReadPost *
   \   exe "normal! g`\"" |
   \ endif
 
+" set line number
+function! g:Nu_toggle()
+    if 1 == &nu && 1 == &rnu
+        set nonu
+        set nornu
+    else
+        set nu
+        set rnu
+    endif
+endfunction
+command LineNumToggle call Nu_toggle()
+
 
 " script demo
 "
