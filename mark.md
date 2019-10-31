@@ -21,7 +21,7 @@ ln -s ~/.vim/vimrc ~/.config/nvim/init.vim
 | SPC f f                 | leaderf 搜索                |
 | leaderf中ctrl+j，ctrl+h | 上下选择                    |
 | SPC j                   | gtags跳转                   |
-|                         |                             |
+| nredtree 中 s 键        | 在新的垂直窗口中打开选中文件|
 |                         |                             |
 |                         |                             |
 |                         |                             |
