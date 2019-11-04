@@ -25,7 +25,7 @@ ln -s ~/.vim/vimrc ~/.config/nvim/init.vim
 | nredtree 中 x 键        | 收缩目录                    |
 | nredtree 中 X 键        | 收缩所有子目录              |
 | nredtree 中 O 键        | 打开所有子目录              |
-|                         |                             |
+| SPC c SPC               | 注释/取消注释               |
 |                         |                             |
 |                         |                             |
 |                         |                             |
