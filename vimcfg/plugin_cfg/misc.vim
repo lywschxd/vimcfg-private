@@ -50,6 +50,11 @@ if has("gui_running")
 
 endif
 
+" 兼容tmux
+if exists('$TMUX')
+    set term=screen-256color
+endif
+
 "记住最后一次编辑的位置
 autocmd BufReadPost *
   \ if line("'\"") > 1 && line("'\"") <= line("$") |
