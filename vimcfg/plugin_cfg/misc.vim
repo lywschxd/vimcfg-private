@@ -6,10 +6,37 @@ set mouse=a
 set smartindent
 set cindent
 set autoindent
+" set showcmd
+set splitbelow
+set splitright
+set wildmenu
+set scrolloff=5
+syntax on
+set background=dark
+" set list
 
+" color define 
 let s:molokai_prefix = g:vims_prefix . 'plugged/molokai/colors'
-if !empty(findfile("molokai.vim", s:molokai_prefix))
+let s:solarized_prefix = g:vims_prefix . 'plugged/vim-colors-solarized/colors'
+let s:onehalf_prefix = g:vims_prefix . 'plugged/onehalf/vim/colors'
+let s:snazzy_prefix = g:vims_prefix . 'plugged/vim-snazzy/colors'
+
+if !empty(findfile("snazzy.vim", s:snazzy_prefix))
+    " semi-transparent
+    let g:SnazzyTransparent = 1
+    colo snazzy
+    hi Pmenu ctermbg=235 ctermfg=244
+    hi CursorLine ctermbg=58
+elseif !empty(findfile("onehalfdark.vim", s:onehalf_prefix))
+    colo onehalfdark
+    hi Pmenu ctermbg=235 ctermfg=244
+    hi CursorLine ctermbg=58
+elseif !empty(findfile("molokai.vim", s:molokai_prefix))
     colo molokai
+elseif !empty(findfile("solarized.vim", s:solarized_prefix))
+    colo solarized
+else
+    colo default
 endif
 
 set ruler
@@ -23,12 +50,10 @@ set encoding=utf-8
 set fileencoding=utf-8
 set fileformat=unix
 set autoread
-syntax on
-set background=dark
 set nobackup
 
 if !has('nvim')
-    set termwinsize=
+    " set termwinsize=
 endif
 
 set updatetime=500
@@ -40,11 +65,11 @@ if has("gui_running")
     set columns=239
 
     if has("gui_gtk2")
-        set guifont=Source\ Code\ Pro\ 10
+        set guifont=Fira\ Code\ Retina\ 10
     elseif has("x11")
-        set guifont=Source\ Code\ Pro\ 10
+        set guifont=Fira\ Code\ Retina\ 10
     elseif has("gui_win32")
-	    set guifont=Source\ Code\ Pro:h10
+	    set guifont=Fira\ Code\ Retina:h10
 
     endif
 
@@ -76,3 +101,20 @@ endif
 " let mab=['a', 'b', 'c']
 "
 " call g:Source_vims(mab)
+"
+
+" if 1 == &nu && 1 == &rnu
+"     echo "---------------------->>>>"
+" endif
+"
+" function! g:Nu_toggle()
+"     if 1 == &nu && 1 == &rnu
+"         echo "---------------------->>>>"
+"         set nonu
+"         set nornu
+"     else
+"         echo "----------------------<<<<"
+"         set nu
+"         set rnu
+"     endif
+" endfunction

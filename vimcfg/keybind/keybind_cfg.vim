@@ -15,66 +15,141 @@ let g:which_key_map.a = {
       \ }
 
 let g:which_key_map.d = {
-      \ 'name' : '+Doxystyle',
+      \ 'name' : '+Doxystyle-and-window',
       \ 'f'    : [':Dox', 'doxygen-file'],
       \ 'a'    : [':DoxAuthor', 'doxygen-author'],
       \ 'l'    : [':DoxLic', 'doxygen-license'],
+      \ '1'    : [':1quit!', 'which_key_ignore'],
+      \ '2'    : [':2quit!', 'which_key_ignore'],
+      \ '3'    : [':3quit!', 'which_key_ignore'],
+      \ '4'    : [':4quit!', 'which_key_ignore'],
+      \ '5'    : [':5quit!', 'which_key_ignore'],
+      \ '6'    : [':6quit!', 'which_key_ignore'],
+      \ '7'    : [':7quit!', 'which_key_ignore'],
+      \ '8'    : [':8quit!', 'which_key_ignore'],
+      \ '9'    : [':9quit!', 'which_key_ignore'],
       \ }
 
-nmap <silent><leader>jd    :Gtags <c-r><c-w><cr>
-nmap <silent><leader>jr    :Gtags -r <c-r><c-w><cr>
-nmap <silent><leader>je    :Gtags -ge <c-r><c-w><cr>
-nmap <silent><leader>jg    :Gtags -go <c-r><c-w><cr>
-nmap <silent><leader>jc    :Gtags -f %<cr>
-nmap <silent><leader>jf    :Gtags -P <c-r><c-f><cr>
-nmap <silent><leader>js    :Gtags -s <c-r><c-w><cr>
-nmap <silent><leader>jj    :GtagsCursor<cr>
+" nmap <silent><leader>jd    :Gtags <c-r><c-w><cr>
+" nmap <silent><leader>jr    :Gtags -r <c-r><c-w><cr>
+" nmap <silent><leader>je    :Gtags -ge <c-r><c-w><cr>
+" nmap <silent><leader>jg    :Gtags -go <c-r><c-w><cr>
+" nmap <silent><leader>jc    :Gtags -f %<cr>
+" nmap <silent><leader>jf    :Gtags -P <c-r><c-f><cr>
+" nmap <silent><leader>js    :Gtags -s <c-r><c-w><cr>
+" nmap <silent><leader>jj    :GtagsCursor<cr>
 
-nmap <silent><leader>jS    :cs find s <C-R>=expand("<cword>")<CR><CR>
-nmap <silent><leader>jG    :cs find g <C-R>=expand("<cword>")<CR><CR>
-nmap <silent><leader>jC    :cs find c <C-R>=expand("<cword>")<CR><CR>
-nmap <silent><leader>jT    :cs find t <C-R>=expand("<cword>")<CR><CR>
-nmap <silent><leader>jE    :cs find e <C-R>=expand("<cword>")<CR><CR>
-nmap <silent><leader>jF    :cs find f <C-R>=expand("<cfile>")<CR><CR>
-nmap <silent><leader>jI    :cs find i ^<C-R>=expand("<cfile>")<CR>$<CR>
-nmap <silent><leader>jD    :cs find d <C-R>=expand("<cword>")<CR><CR>
-nmap <silent><leader>jA    :cs find a <C-R>=expand("<cword>")<CR><CR>
+" nmap <silent><leader>jS    :cs find s <C-R>=expand("<cword>")<CR><CR>
+" nmap <silent><leader>jG    :cs find g <C-R>=expand("<cword>")<CR><CR>
+" nmap <silent><leader>jC    :cs find c <C-R>=expand("<cword>")<CR><CR>
+" nmap <silent><leader>jT    :cs find t <C-R>=expand("<cword>")<CR><CR>
+" nmap <silent><leader>jE    :cs find e <C-R>=expand("<cword>")<CR><CR>
+" nmap <silent><leader>jF    :cs find f <C-R>=expand("<cfile>")<CR><CR>
+" nmap <silent><leader>jI    :cs find i ^<C-R>=expand("<cfile>")<CR>$<CR>
+" nmap <silent><leader>jD    :cs find d <C-R>=expand("<cword>")<CR><CR>
+" nmap <silent><leader>jA    :cs find a <C-R>=expand("<cword>")<CR><CR>
+
+" echo getqflist({'size' : 1}) , get quickfix error iterm number
+function! s:Quickfix_jump(arg) abort
+    let s:quickfix_item_num = getqflist({'size' : 1})['size']
+    if s:quickfix_item_num == 2
+        normal j
+        " jump the quickfix item under cursor
+        .cc
+    elseif s:quickfix_item_num > 2
+        normal j
+    endif
+endfunction
+
+com! -n=? QuickfixJump call s:Quickfix_jump(<q-args>)
 
 " gutentag_plus key-binding config
-" noremap <silent><leader>js :GscopeFind s <C-R><C-W><cr>
-" noremap <silent><leader>jd :GscopeFind g <C-R><C-W><cr>
-" noremap <silent><leader>jr :GscopeFind c <C-R><C-W><cr>
-" noremap <silent><leader>jt :GscopeFind t <C-R><C-W><cr>
-" noremap <silent><leader>je :GscopeFind e <C-R><C-W><cr>
-" noremap <silent><leader>jf :GscopeFind f <C-R>=expand("<cfile>")<cr><cr>
-" noremap <silent><leader>ji :GscopeFind i <C-R>=expand("<cfile>")<cr><cr>
+" noremap <silent><leader>js :GscopeFind s <C-R><C-W><cr>:call <SID>Quickfix_jump()<cr>
+" noremap <silent><leader>jd :GscopeFind g <C-R><C-W><cr>:call <SID>Quickfix_jump()<cr>
+" noremap <silent><leader>jr :GscopeFind c <C-R><C-W><cr>:call <SID>Quickfix_jump()<cr>
+" noremap <silent><leader>jt :GscopeFind t <C-R><C-W><cr>:call <SID>Quickfix_jump()<cr>
+" noremap <silent><leader>je :GscopeFind e <C-R><C-W><cr>:call <SID>Quickfix_jump()<cr>
+" noremap <silent><leader>jf :GscopeFind f <C-R>=expand("<cfile>")<cr><cr>:call <SID>Quickfix_jump()<cr>
+" noremap <silent><leader>ji :GscopeFind i <C-R>=expand("<cfile>")<cr><cr>:call <SID>Quickfix_jump()<cr>
+" noremap <silent><leader>ja :GscopeFind a <C-R><C-W><cr>:call <SID>Quickfix_jump()<cr>
+" not common for use
 " noremap <silent><leader>jI :GscopeFind d <C-R><C-W><cr>
-" noremap <silent><leader>jA :GscopeFind a <C-R><C-W><cr>
 
-let g:which_key_map.j = {
-      \ 'name' : '+Jump',
-      \ 'j'    : 'gtags-jump-definition-or-reference',
-      \ 'd'    : 'gtags-jump-definition',
-      \ 'r'    : 'gtags-jump-reference',
-      \ 'e'    : 'gtags-jump-regexp-find',
-      \ 'g'    : 'gtags-jump-grep',
-      \ 'c'    : 'gtags-jump-current-file-symbol',
-      \ 'f'    : 'gtags-jump-file',
-      \ 's'    : 'gtags-jump-symbol',
-      \ 'S'    : 'cscope-jump-symble',
-      \ 'G'    : 'cscope-jump-definition',
-      \ 'C'    : 'cscope-jump-reference',
-      \ 'T'    : 'cscope-jump-text',
-      \ 'E'    : 'cscope-jump-egrep',
-      \ 'F'    : 'cscope-jump-file',
-      \ 'I'    : 'cscope-jump-including',
-      \ 'D'    : 'cscope-jump-call-func',
-      \ 'A'    : 'cscope-jump-symbol-assigned',
-      \ 'a'    : [':LeaderfFunction', 'leaderf-jump-current-functions'],
-      \ 'b'    : [':LeaderfBufTag', 'leaderf-jump-current-tag'],
-      \ 'h'    : [':LeaderfBufTagAll', 'leaderf-jump-all-tag'],
-      \ }
-      
+"leaderf gtags integration
+" noremap <silent><leader>jd :Leaderf! gtags -d <c-r><c-w><cr>
+" noremap <silent><leader>jr :Leaderf! gtags -r <c-r><c-w><cr>
+" noremap <silent><leader>js :Leaderf! gtags -s <c-r><c-w><cr>
+" noremap <silent><leader>jg :Leaderf! gtags -g <c-r><c-w><cr>
+
+" noremap <silent><leader>jr :<C-U><C-R>=printf("Leaderf! gtags -r %s --auto-jump", expand("<cword>"))<CR><CR>
+" noremap <silent><leader>jd :<C-U><C-R>=printf("Leaderf! gtags -d %s --auto-jump", expand("<cword>"))<CR><CR>
+" noremap <silent><leader>js :<C-U><C-R>=printf("Leaderf! gtags -s %s --auto-jump", expand("<cword>"))<CR><CR>
+" noremap <silent><leader>je :<C-U><C-R>=printf("Leaderf! gtags -g %s --auto-jump", expand("<cword>"))<CR><CR>
+" noremap <silent><leader>jl :<C-U><C-R>=printf("Leaderf! gtags --recall %s", "")<CR><CR>
+" noremap <silent><leader>jb :<C-U><C-R>=printf("Leaderf gtags --current-buffer --result ctags-mod %s", "")<CR><CR>
+" noremap <silent><leader>jB :<C-U><C-R>=printf("Leaderf gtags --all-buffers --result ctags-mod %s", "")<CR><CR>
+" noremap <silent><leader>ja :<C-U><C-R>=printf("Leaderf gtags --all --result ctags-mod %s", "")<CR><CR>
+
+let g:jump_engine = "lsp"
+
+if "lsp" == g:jump_engine
+    nmap <silent><leader>jd :call CocActionAsync("jumpDefinition", "vsplit")<cr>
+    nmap <silent><leader>jD :call CocActionAsync("jumpDeclaration", "vsplit")<cr>
+    nmap <silent><leader>ji :call CocActionAsync("jumpImplementation", "vsplit")<cr>
+    nmap <silent><leader>jt :call CocActionAsync("jumpTypeDefinition", "vsplit")<cr>
+    nmap <silent><leader>jr :call CocActionAsync("jumpReferences", "drop")<cr>
+
+    let g:which_key_map.j = {
+          \ 'name' : '+Jump',
+          \ 'd'    : 'jump-definition',
+          \ 'D'    : 'jump-declaration',
+          \ 'i'    : 'jump-implementation',
+          \ 't'    : 'jump-type-definition',
+          \ 'r'    : 'jump-reference',
+          \ 'b'    : [':LeaderBufTag', 'current-buffer-tag'],
+          \ 'B'    : [':LeaderBufTagAll', 'all-buffers-tag'],
+          \ }
+         
+elseif "gtags" == g:jump_engine
+    " gutentag_plus key-binding config
+    noremap <silent><leader>js :GscopeFind s <C-R><C-W><cr>:QuickfixJump<cr>
+    noremap <silent><leader>jd :GscopeFind g <C-R><C-W><cr>:QuickfixJump<cr>
+    noremap <silent><leader>jr :GscopeFind c <C-R><C-W><cr>:QuickfixJump<cr>
+    noremap <silent><leader>jt :GscopeFind t <C-R><C-W><cr>:QuickfixJump<cr>
+    noremap <silent><leader>je :GscopeFind e <C-R><C-W><cr>:QuickfixJump<cr>
+    noremap <silent><leader>jf :GscopeFind f <C-R>=expand("<cfile>")<cr><cr>:QuickfixJump<cr>
+    noremap <silent><leader>ji :GscopeFind i <C-R>=expand("<cfile>")<cr><cr>:QuickfixJump<cr>
+    noremap <silent><leader>ja :GscopeFind a <C-R><C-W><cr>:QuickfixJump<cr>
+    " not common for use
+    " noremap <silent><leader>jI :GscopeFind d <C-R><C-W><cr>
+    let g:which_key_map.j = {
+          \ 'name' : '+Jump',
+          \ 'd'    : 'jump-definition',
+          \ 'r'    : 'jump-reference',
+          \ 'e'    : 'jump-egrep',
+          \ 't'    : 'jump-text',
+          \ 'i'    : 'jump-include-this-file',
+          \ 'f'    : 'jump-this-file',
+          \ 's'    : 'jump-symbol',
+          \ 'a'    : 'jump-symbol-assigned',
+          \ }
+endif
+      " \ 's'    : 'gtags-jump-symbol',
+      " \ 'j'    : 'gtags-jump-definition-or-reference',
+      " \ 'd'    : 'gtags-jump-definition',
+      " \ 'r'    : 'gtags-jump-reference',
+      " \ 'e'    : 'gtags-jump-regexp-find',
+      " \ 'g'    : 'gtags-jump-grep',
+      " \ 'c'    : 'gtags-jump-current-file-symbol',
+      " \ 'S'    : 'cscope-jump-symble',
+      " \ 'G'    : 'cscope-jump-definition',
+      " \ 'C'    : 'cscope-jump-reference',
+      " \ 'T'    : 'cscope-jump-text',
+      " \ 'E'    : 'cscope-jump-egrep',
+      " \ 'F'    : 'cscope-jump-file',
+      " \ 'I'    : 'cscope-jump-including',
+      " \ 'D'    : 'cscope-jump-call-func',
+      " \ 'A'    : 'cscope-jump-symbol-assigned',
       " \ 'd'    : 'gutentags-jump-definition',
       " \ 'r'    : 'gutentags-jump-reference',
       " \ 'e'    : 'gutentags-egrep-find',
@@ -102,14 +177,33 @@ let g:which_key_map.h = {
 " vim quickfix open/close keybinding config
 let g:which_key_map.q = {
       \ 'name' : '+Quickfix',
-      \ 'o'    : [':botright cw', 'open-quickfix-win'],
+      \ 'o'    : [':botright cw 10', 'open-quickfix-win'],
       \ 'c'    : [':ccl', 'close-quickfix-win'],
       \ }
+
+let s:Vista_toggle_cnt = 0
+function! s:Vista_toggle(sel) abort
+    if s:Vista_toggle_cnt == 0
+        exec 'Vista ' . a:sel
+        let s:Vista_toggle_cnt = 1
+    else
+        Vista!
+        let s:Vista_toggle_cnt = 0
+    endif
+endfunction
+
+com! -n=? VistaToggle call s:Vista_toggle(<q-args>)
+
+nmap <silent><leader>tl :let g:vista_stay_on_open=1<cr>:call vista#sidebar#Toggle()<cr>
+nmap <silent><leader>tp :let g:vista_stay_on_open=0<cr>:call vista#sidebar#Toggle()<cr>
+nmap <silent><leader>tc :Vista coc<cr>
 
 " tag config
 let g:which_key_map.t = {
       \ 'name' : '+Tag',
-      \ 'l'    : [':TagbarToggle', 'open-tagbar-list'],
+      \ 'l'    : 'tag-list-toggle',
+      \ 'p'    : 'preview-tag-list-toggle',
+      \ 'c'    : 'coc-tag-list-toggle',
       \ }
 
 " fzf and leaderf keybinding config
@@ -123,14 +217,14 @@ let g:which_key_map.f = {
       \ 'F'    : [':Files', 'fzf-find-file'],
       \ 'l'    : 'locate-find-file',
       \ 'g'    : [':GFiles', 'git-find-file'],
-      \ 'r'    : [':History', 'fzf-find-recent-file'],
+      \ 'r'    : [':LeaderfMru', 'most-recent-used-file'],
       \ 't'    : [':NERDTreeToggle', 'file-tree-browser-toggle'],
       \ 'c'    : [':NERDTreeFind %', 'current-file-tree-browser'],
       \ 'L'    : 'async-locate-find-file',
-      \ 's'    : [':Startify', 'open-startify'],
       \ 'b'    : [':CocList files', 'Coc-find-file'],
       \ 'd'    : [':CocList mru', 'Coc-find-recent-file'],
       \ }
+      " \ 's'    : [':Startify', 'open-startify'],
 
 " buffer keybinding config
 let g:which_key_map.g = {
@@ -157,6 +251,9 @@ nmap <Leader>se <Plug>(AerojumpFromCursorBolt)
 nmap <Leader>sh <Plug>LeaderfRgPrompt
 nmap <Leader>sj <Plug>LeaderfRgCwordLiteralNoBoundary<cr>
 nmap <Leader>sk <Plug>LeaderfRgCwordRegexNoBoundary<cr>
+" Formatting selected code.
+xmap <leader>sF  <Plug>(coc-format-selected)
+nmap <leader>sF  <Plug>(coc-format-selected)
 
 let g:which_key_map.s = {
       \ 'name' : '+Search-And-Style',
@@ -169,14 +266,15 @@ let g:which_key_map.s = {
       \ 's'    : 'search-and-jump-space',
       \ 'b'    : 'search-and-jump-bolt',
       \ 'e'    : 'search-and-jump-from-cursor-bold',
-      \ 'f'    : [':FlyGrep', 'async-flygrep-search'],
       \ 'c'    : [':CocList words', 'coc-search-in-current-buffer'],
       \ 'h'    : 'toggole-leaderf-search',
       \ 'j'    : 'leaderf-search-word-under-cursor',
       \ 'k'    : 'leaderf-regex-search-word-under-cursor',
       \ 'l'    : [':LeaderfRgInteractive', 'leaderf-rg-search-interactive'],
+      \ 'F'    : 'format-select-region',
       \ }
       " \ 'g'    : [':Grepper', 'async-grepper-search'],
+      " \ 'f'    : [':FlyGrep', 'async-flygrep-search'],
 
 " buffer keybinding config
 let g:Lf_ShortcutB = '<leader>bt'
@@ -185,18 +283,20 @@ let g:which_key_map.b = {
       \ 'T'    : [':Buffers', 'fzf-buffers'],
       \ 't'    : 'leaderf-buffers',
       \ 'b'    : [':CtrlPBuffer', 'ctrlp-buffers'],
+      \ 'w'    : [':w!', 'buffer-write-to-file'],
+      \ 'W'    : [':wa!', 'all-buffer-write-to-file'],
       \ 'a'    : [':CocList buffers', 'Coc-buffers'],
       \ 'p'    : [':bp', 'switch-prev-buffer'],
       \ 'n'    : [':bn', 'switch-next-buffer'],
-      \ '1'    : [':b 1', 'switch buffer 1'],
-      \ '2'    : [':b 2', 'switch buffer 2'],
-      \ '3'    : [':b 3', 'switch buffer 3'],
-      \ '4'    : [':b 4', 'switch buffer 4'],
-      \ '5'    : [':b 5', 'switch buffer 5'],
-      \ '6'    : [':b 6', 'switch buffer 6'],
-      \ '7'    : [':b 7', 'switch buffer 7'],
-      \ '8'    : [':b 8', 'switch buffer 8'],
-      \ '9'    : [':b 9', 'switch buffer 9'],
+      \ '1'    : [':b 1', 'which_key_ignore'],
+      \ '2'    : [':b 2', 'which_key_ignore'],
+      \ '3'    : [':b 3', 'which_key_ignore'],
+      \ '4'    : [':b 4', 'which_key_ignore'],
+      \ '5'    : [':b 5', 'which_key_ignore'],
+      \ '6'    : [':b 6', 'which_key_ignore'],
+      \ '7'    : [':b 7', 'which_key_ignore'],
+      \ '8'    : [':b 8', 'which_key_ignore'],
+      \ '9'    : [':b 9', 'which_key_ignore'],
       \ }
 
 
@@ -225,31 +325,50 @@ let g:which_key_map.b = {
 " let g:which_key_map.n = 'switch to buffer next'
 
 " map key config for lightline-bufferline
-nmap <Leader>1 <Plug>lightline#bufferline#go(1)
-nmap <Leader>2 <Plug>lightline#bufferline#go(2)
-nmap <Leader>3 <Plug>lightline#bufferline#go(3)
-nmap <Leader>4 <Plug>lightline#bufferline#go(4)
-nmap <Leader>5 <Plug>lightline#bufferline#go(5)
-nmap <Leader>6 <Plug>lightline#bufferline#go(6)
-nmap <Leader>7 <Plug>lightline#bufferline#go(7)
-nmap <Leader>8 <Plug>lightline#bufferline#go(8)
-nmap <Leader>9 <Plug>lightline#bufferline#go(9)
-let g:which_key_map.1 = 'switch to window 1'
-let g:which_key_map.2 = 'switch to window 2'
-let g:which_key_map.3 = 'switch to window 3'
-let g:which_key_map.4 = 'switch to window 4'
-let g:which_key_map.5 = 'switch to window 5'
-let g:which_key_map.6 = 'switch to window 6'
-let g:which_key_map.7 = 'switch to window 7'
-let g:which_key_map.8 = 'switch to window 8'
-let g:which_key_map.9 = 'switch to window 9'
+nmap <silent><Leader>1 :1wincmd w<cr>
+nmap <silent><Leader>2 :2wincmd w<cr>
+nmap <silent><Leader>3 :3wincmd w<cr>
+nmap <silent><Leader>4 :4wincmd w<cr>
+nmap <silent><Leader>5 :5wincmd w<cr>
+nmap <silent><Leader>6 :6wincmd w<cr>
+nmap <silent><Leader>7 :7wincmd w<cr>
+nmap <silent><Leader>8 :8wincmd w<cr>
+nmap <silent><Leader>9 :9wincmd w<cr>
+let g:which_key_map.1 = 'which_key_ignore'
+let g:which_key_map.2 = 'which_key_ignore'
+let g:which_key_map.3 = 'which_key_ignore'
+let g:which_key_map.4 = 'which_key_ignore'
+let g:which_key_map.5 = 'which_key_ignore'
+let g:which_key_map.6 = 'which_key_ignore'
+let g:which_key_map.7 = 'which_key_ignore'
+let g:which_key_map.8 = 'which_key_ignore'
+let g:which_key_map.9 = 'which_key_ignore'
 
+noremap <leader>wr :set splitright<cr>:vert split<cr> 
+noremap <leader>wl :set nosplitright<cr>:vert split<cr> 
+noremap <leader>wb :set splitbelow<cr>:split<cr> 
+noremap <leader>wu :set nosplitbelow<cr>:split<cr> 
+noremap <leader>wo <C-W>o 
+noremap <leader>wh <C-W>t<C-W>K 
+noremap <leader>wv <C-W>t<C-W>H 
+" window keybind config
+let g:which_key_map.w = {
+    \ 'name' : '+Window',
+    \ 'r'    : 'vertical-split-right-win',
+    \ 'l'    : 'vertical-split-left-win',
+    \ 'b'    : 'horizontal-split-below-win',
+    \ 'u'    : 'horizontal-split-up-win',
+    \ 'o'    : 'close-other-win',
+    \ 'h'    : 'change-split-horizontal',
+    \ 'v'    : 'change-split-vertical',
+    \}
 
 " window manipulate keybinding config
-nmap <silent><C-h> <C-W>h
-nmap <silent><C-l> <C-W>l
-nmap <silent><C-j> <C-W>j
-nmap <silent><C-k> <C-W>k
+" nmap <silent><C-h> <C-W>h
+" nmap <silent><C-l> <C-W>l
+" nmap <silent><C-j> <C-W>j
+" nmap <silent><C-k> <C-W>k
+" nmap <silent>q :q<cr>
 
 " cancel some keybinding
 " add the autocmd hook define when at vimenter
@@ -268,6 +387,55 @@ let g:which_key_map.e = {
       \ 'e'    : [':CocCommand', 'coc-command-open'],
       \ }
 
+nmap <silent> <leader>mm :BookmarkToggle<cr>:e<cr>
+nmap <silent> <leader>ma :BookmarkShowAll<cr>
+nmap <silent> <leader>mc :BookmarkClearAll<cr>:e<cr>
+
+" markdown config
+let g:which_key_map.m = {
+      \ 'name' : '+markdown-and-bookmark',
+      \ 'p' : ['<Plug>MarkdownPreview', 'markdown-preview'],
+      \ 's' : ['<Plug>MarkdownPreviewStop', 'markdown-stop'],
+      \ 't' : ['<Plug>MarkdownPreviewToggle', 'markdown-toggle'],
+      \ 'm' : 'bookmark-toggle',
+      \ 'a' : 'show-all-bookmark',
+      \ 'c' : 'clear-all-bookmark',
+      \ }
+
+
+
+" some misc setting config keybind
+noremap S :w!<cr>
+noremap Q :q!<cr>
+noremap R :source $MYVIMRC<cr>
+" in normal mode
+nmap n nzz
+nmap N Nzz
+nmap <silent><C-j> :resize +5<cr>
+nmap <silent><C-k> :resize -5<cr>
+
+if has('nvim')
+    " vim-preview keybind config
+    " M-u to scroll preview up
+    " M-d to scroll preview down
+    nmap <silent><M-u> :PreviewScroll -1<cr>
+    nmap <silent><M-d> :PreviewScroll +1<cr>
+    imap <silent><M-u> <c-\><c-o>:PreviewScroll -1<cr>
+    imap <silent><M-d> <c-\><c-o>:PreviewScroll +1<cr>
+    nmap <silent><M-j> :vertical resize -5<cr>
+    nmap <silent><M-k> :vertical resize +5<cr>
+else
+    " vim-preview keybind config
+    " M-u to scroll preview up
+    " M-d to scroll preview down
+    nmap <silent>u :PreviewScroll -1<cr>
+    nmap <silent>d :PreviewScroll +1<cr>
+    imap <silent>u <c-\><c-o>:PreviewScroll -1<cr>
+    imap <silent>d <c-\><c-o>:PreviewScroll +1<cr>
+    nmap <silent>j :vertical resize -5<cr>
+    nmap <silent>k :vertical resize +5<cr>
+endif
+
 "coc.nvim keybinding
 function! s:check_back_space() abort
     let col = col('.') - 1
@@ -279,8 +447,41 @@ inoremap <silent><expr> <TAB>
     \ pumvisible() ? "\<C-n>" :
     \ <SID>check_back_space() ? "\<TAB>" :
     \ coc#refresh()
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
 
+" " Use <cr> to confirm completion, `<C-g>u` means break undo chain at current
+" " position. Coc only does snippet and additional edit on confirm.
+" if exists('*complete_info')
+"   inoremap <expr> <cr> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<CR>"
+" else
+"   imap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+" endif
+
+" Use K to show documentation in preview window.
+nnoremap <silent> K :call <SID>show_documentation()<CR>
+
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  else
+    call CocAction('doHover')
+  endif
+endfunction
+" Use `[g` and `]g` to navigate diagnostics
+nmap <silent> [g <Plug>(coc-diagnostic-prev)
+nmap <silent> ]g <Plug>(coc-diagnostic-next)
+
+" Symbol renaming.
+nmap <leader>rn <Plug>(coc-rename)
+" rename config
+let g:which_key_map.r = {
+      \ 'name' : '+rename',
+      \ 'n' : 'symbol-rename',
+      \ }
 
 " which-key keybinding config
-nnoremap <silent><leader> :WhichKey '<Space>'<CR>
+nnoremap <silent><leader> :<c-u>WhichKey '<Space>'<CR>
+vnoremap <silent><leader> :<c-u>WhichKeyVisual '<Space>'<CR>
 
+" choose-wind keybinding config
+" nmap  \  <Plug>(choosewin)

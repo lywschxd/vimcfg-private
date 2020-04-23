@@ -63,7 +63,7 @@ Plug 'junegunn/gv.vim'
 Plug 'liuchengxu/vim-which-key'
 
 " On-demand lazy load
-Plug 'liuchengxu/vim-which-key', { 'on': ['WhichKey', 'WhichKey!'] }
+Plug 'liuchengxu/vim-which-key', { 'on': ['WhichKey', 'WhichKey!', 'WhichKeyVisual', 'WhichKeyVisual!'] }
 " To register the descriptions when using the on-demand load feature, use the autocmd hook to call which#register(),
 " e.g., register for the Space key(see more configuration details in the following sections):
 " autocmd! User vim-which-key call which#register('<Space>', 'g:which_key_map')
@@ -72,23 +72,49 @@ autocmd! User vim-which-key call which_key#register('<Space>', 'g:which_key_map'
 " Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'sonph/onehalf', {'rtp': 'vim/'}
 
-" Plug 'ludovicchabant/vim-gutentags'
-" Plug 'skywind3000/gutentags_plus'
+Plug 'ludovicchabant/vim-gutentags'
+Plug 'skywind3000/gutentags_plus'
 
 Plug 'skywind3000/vim-preview'
 Plug 'kien/ctrlp.vim'
 Plug 'junegunn/goyo.vim'
-Plug 'itchyny/lightline.vim'
-Plug 'mengelbrecht/lightline-bufferline'
+" Plug 'itchyny/lightline.vim'
+" Plug 'mengelbrecht/lightline-bufferline'
 Plug 'altercation/vim-colors-solarized'
 Plug 'kien/rainbow_parentheses.vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " Plug 'arakashic/chromatica.nvim'
 Plug 'brooth/far.vim'
-Plug 'wsdjeg/FlyGrep.vim'
+" Plug 'wsdjeg/FlyGrep.vim'
 " Plug 'neomake/neomake'
 " Plug 'mhinz/vim-grepper'
-Plug 'ripxorip/aerojump.nvim', { 'do': ':UpdateRemotePlugins' }
-Plug 'mhinz/vim-startify'
+Plug 'ABigBright/aerojump.nvim', { 'branch': 'for_briq_vimcfg', 'do': ':UpdateRemotePlugins' }
+" Plug 'mhinz/vim-startify'
+
+" Plug 't9md/vim-choosewin'
+Plug 'octol/vim-cpp-enhanced-highlight'
+" Plug 'ryanoasis/vim-devicons'
+" Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
+Plug 'trusktr/seti.vim'
+Plug 'andymass/vim-matchup'
+" Plug 'ryanoasis/nerd-fonts', {'do': './install FiraCode'}
+Plug 'plasticboy/vim-markdown'
+" Plug 'suan/vim-instant-markdown', {'for': 'markdown'}
+
+" If you don't have nodejs and yarn
+" use pre build
+Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() } }
+" If you have nodejs and yarn
+" Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install'  }
+
+" Plug 'connorholyday/vim-snazzy'
+" Plug 'Xuyuanp/nerdtree-git-plugin'
+"
+Plug 'guns/xterm-color-table.vim'
+Plug 'MattesGroeger/vim-bookmarks'
+
+Plug 'liuchengxu/vista.vim'
+
+Plug 'liuchengxu/eleline.vim' 
 
 call plug#end()

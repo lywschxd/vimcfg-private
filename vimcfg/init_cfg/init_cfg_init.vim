@@ -12,8 +12,16 @@ let s:plugin_install_dir = g:vims_prefix . 'plugged'
 if empty(finddir(s:plugin_install_dir))
     PlugClean
     PlugInstall
-    CocInstall coc-json
-    CocInstall coc-lists
-    CocInstall coc-marketplace
-    CocInstall coc-terminal
 endif
+
+" coc install func define 
+let s:coc_install_dir = g:vims_prefix . 'plugged/coc.nvim/plugin'
+function! g:Coc_extd_instl()
+    if !empty(finddir(s:coc_install_dir))
+        CocInstall coc-json
+        CocInstall coc-lists
+        CocInstall coc-marketplace
+        CocInstall coc-terminal
+        CocInstall coc-bookmark
+    endif
+endfunction
